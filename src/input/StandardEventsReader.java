@@ -83,6 +83,7 @@ public class StandardEventsReader implements ExternalEventsReader {
 			Scanner lineScan = new Scanner(line);
 			if (skipPattern.matcher(line).matches()) {
 				// skip empty and comment lines
+				lineScan.close();
 				continue;
 			}
 			
@@ -176,9 +177,11 @@ public class StandardEventsReader implements ExternalEventsReader {
 				}
 				eventsRead++;
 			} catch (Exception e) {
+				lineScan.close();
 				throw new SimError("Can't parse external event " + 
 						(eventsRead+1) + " from '" + line + "'", e);
 			}
+			lineScan.close();
 		}
 		
 		return events;

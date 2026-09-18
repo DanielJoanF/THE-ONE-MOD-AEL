@@ -104,6 +104,7 @@ public class DTN2Manager {
 		try {
 				s = in.readLine();
 			} catch (Exception e) {
+				try { if (in != null) in.close(); } catch (Exception ex) {}
 				return;
 			}
 		while (s!=null) {
@@ -138,9 +139,11 @@ public class DTN2Manager {
 			try {
 				s = in.readLine();
 			} catch (Exception e) {
+				try { if (in != null) in.close(); } catch (Exception ex) {}
 				return;
 			}
 		}
+		try { if (in != null) in.close(); } catch (Exception ex) {}
 	}
 	
 	
